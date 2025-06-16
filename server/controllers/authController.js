@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 
+
 const signup = async (req, res) => {
   const { username, email, password } = req.body;
   console.log("Signup hit", username);
@@ -39,7 +40,6 @@ const login = async(req,res) => {
     try {
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
 
-
         if(user.rows.length ===0){
             return res.status(401).json({error: "No such user exists"});
         }
@@ -54,11 +54,9 @@ const login = async(req,res) => {
             process.env.JWT_SECRET,
             {expiresIn:"1h"}
         );
-
         res.status(200).json({token});
 
     } catch (error) {
-        console.error("Login error", error);
         res.status(500).json({error:"Server error during login"});
     }
 };
