@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"; // For "x minutes ago" formatting
 
 // Styles and assets
-import "../styles/UserDashboard.css";
+import "../styles/userDashboard.css";
 import Logo from "../assets/Logo.svg";
 
 // Enable dayjs to use relative time formatting
