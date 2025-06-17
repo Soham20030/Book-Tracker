@@ -45,7 +45,7 @@ const Dashboard = () => {
     const fetchBooks = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/books", {
+        const res = await fetch("https://book-tracker-backend-k37q.onrender.com/api/books", {
           headers: {
             Authorization: `Bearer ${token}`, // ✅ Authenticated request
           },
