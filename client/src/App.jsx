@@ -1,9 +1,7 @@
 // Import core routing components from react-router-dom
 // BrowserRouter handles the routing context using the browser's address bar
 // Routes is a wrapper for all defined <Route>s
-// Route defines a single route and its corresponding component
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 // Import individual pages used in the application
 import SignupPage from "./pages/SignupPage";        // Signup form page
 import LoginPage from "./pages/LoginPage";          // Login form page
@@ -22,7 +20,7 @@ import { Toaster } from 'react-hot-toast';
 function App() {
   return (
     // Router wraps the entire application and enables routing
-    <Router>
+    <>
       {/* Toast notification container setup
           Appears in the top-center of the page
           We configure font size, padding, and max width for visual consistency */}
@@ -86,7 +84,7 @@ function App() {
         {/* View a specific user's review dashboard (publicly visible by username) */}
         <Route path="/user/:username" element={<UserDashboard />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
