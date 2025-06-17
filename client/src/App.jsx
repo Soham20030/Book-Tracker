@@ -45,6 +45,9 @@ function App() {
         {/* Signup page for new users to register */}
         <Route path="/signup" element={<SignupPage />} />
 
+        {/* Signup page for new users to register to the root "/" */}
+        <Route path="/" element={<SignupPage />} />
+
         {/* Login page for existing users to authenticate */}
         <Route path="/login" element={<LoginPage />} />
 
