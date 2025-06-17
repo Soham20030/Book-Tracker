@@ -30,7 +30,7 @@ const Signup = ({ onSignup }) => {
 
     try {
       // Send a POST request to the backend signup endpoint
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch("https://book-tracker-backend-k37q.onrender.com/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form), // Send the form data as JSON
