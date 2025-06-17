@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #FFF4DC;
+}
+
+
+.navbar {
+    width: auto;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+    background-color: #F9EDD1;
+
+    border: 2px solid rgba(178, 154, 139, 0.8);
+}
+
+.signup-button {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: #5C858C;
+    color: #333738;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+    border: none;
+}
+
+
+.signup-button:active {
+  transform: scale(0.95);
+}
+
+.main-logo {
+    width: 80px;
+}
+
+.logo {
+    margin-left: 10px;
+}
+
+
+
+.Log {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-component {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 536px;
+    height: 700px;
+    margin-top: 50px;
+    background: linear-gradient(to bottom, #FDC329 0%, #5C858C 15%);
+    border: 5px solid #FC9F2E;
+}
+
+form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form > label {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333738;
+    margin-top: 10px;
+}
+
+form > input {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    width: 390px;
+    height: 73px;
+    background-color: rgba(217, 217, 217, 0.14);
+    border: 2px solid rgba(0, 0, 0, 0.14);
+    border-radius: 11px;
+    font-size: 21px;
+    color: #333738;
+}
+
+.login-header {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 50px;
+    color: #333738;
+}
+
+.submit-btn {
+    width: 200px;
+    height: 58px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #FA8249 0%, #FBCE4A 100%);
+    border: none;
+    color: #333738;
+    font-size: 28px;
+    margin-top: 20px;
+    margin-left: 100px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+
+.submit-btn:active {
+  transform: scale(0.95);
+}
