@@ -1,0 +1,86 @@
+/* === DASHBOARD WRAPPER === */
+.user-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px; /* Space from navbar */
+}
+
+/* === DASHBOARD HEADING === */
+.user-heading {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333738; /* Dark grey */
+}
+
+/* === GRID CONTAINER FOR BOOK CARDS === */
+.user-book-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between cards */
+  padding: 0 20px;
+  max-width: 1300px;
+  width: 100%;
+}
+
+/* === INDIVIDUAL BOOK CARD === */
+.user-book-card {
+  width: 380px;
+  height: 400px;
+  background-color: #F9EDD1; /* Light beige */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.37); /* Soft border */
+}
+
+/* === CARD HEADER (TITLE + TIMESTAMP) === */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* === BOOK TITLE === */
+.card-title {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+
+/* === TIME SINCE REVIEW WAS POSTED === */
+.card-time {
+  font-size: 14px !important;
+  color: #888; /* Light grey text */
+}
+
+/* === AUTHOR INFO === */
+.card-author {
+  font-size: 16px !important;
+  color: #444;
+  margin: 4px 0;
+}
+
+/* === BOOK REVIEW SECTION === */
+.card-review {
+  background-color: rgba(128, 128, 128, 0.2); /* Light grey background */
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 16px !important;
+  line-height: 1.6;
+  margin: 8px 0;
+  height: 180px !important; /* Fixed height for consistency */
+}
+
+/* === BOOK STATUS (READING / COMPLETED ETC.) === */
+.card-status {
+  font-size: 16px !important;
+  color: #333;
+  font-weight: 500;
+  margin: 4px 0;
+}

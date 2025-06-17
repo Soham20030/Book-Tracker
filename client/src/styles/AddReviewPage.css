@@ -1,0 +1,146 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== NAVBAR STYLING ===== */
+.navbar {
+  width: auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #F9EDD1;
+  border: 2px solid rgba(178, 154, 139, 0.8);
+}
+
+/* ===== LOGOUT & ADD REVIEW BUTTONS ===== */
+.logout-button,
+.add-review {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  color: #333738;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s ease-in-out;
+}
+
+.logout-button {
+  background-color: #5C858C;
+  margin-right: 10px;
+}
+
+.logout-button:active {
+  transform: scale(0.95); /* Adds a press effect */
+}
+
+/* ===== BUTTON CONTAINER ===== */
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== LOGO STYLING ===== */
+.main-logo {
+  width: 80px;
+  flex: 0 0 auto;
+}
+
+/* ===== SEARCH BAR STYLING ===== */
+.search-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-container > form > input {
+  width: 580px;
+  height: 37px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+/* ===== FORM CONTAINER STYLING ===== */
+.main-form {
+  background-color: #58848A;
+  width: 650px;
+  height: 812px;
+  padding: 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 60px;
+  border-radius: 12px;
+}
+
+/* ===== FORM HEADER ===== */
+.main-form h2 {
+  margin-bottom: 40px;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 50px;
+  color: #333738;
+}
+
+/* ===== LABEL STYLING ===== */
+label {
+  font-size: 32px;
+}
+
+/* ===== TEXTAREA (REVIEW BOX) ===== */
+textarea {
+  background-color: rgba(51, 55, 56, 0.35);
+  height: 180px;
+  width: 400px;
+}
+
+/* ===== PAGE BACKGROUND CONTAINER ===== */
+.page-container {
+  height: calc(100vh - 60px); /* Full viewport height minus navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFF4DC;
+}
+
+/* ===== RADIO BUTTONS FOR STATUS ===== */
+.status-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.status-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+  color: #333738;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn {
+  width: 200px;
+  height: 58px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #FA8249 0%, #FBCE4A 100%);
+  border: none;
+  color: #333738;
+  font-size: 28px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.submit-btn:active {
+  transform: scale(0.95);
+}

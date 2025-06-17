@@ -1,0 +1,213 @@
+/* ===== BASE RESET & GLOBAL STYLING ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #FFF4DC; /* Light beige background for the whole page */
+}
+
+/* ===== NAVBAR STYLING ===== */
+.navbar {
+  width: auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #F9EDD1; /* Light yellowish background */
+  border: 2px solid rgba(178, 154, 139, 0.8); /* Subtle brown border */
+}
+
+/* ===== NAVBAR BUTTONS (Logout & Add Review) ===== */
+.logout-button,
+.add-review {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  color: #333738;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s ease-in-out;
+}
+
+.logout-button {
+  background-color: #5C858C; /* Muted blue-gray */
+  margin-right: 10px;
+}
+
+.add-review {
+  background: linear-gradient(to right, #FA8249 0%, #FBCE4A 100%);
+  margin-right: 10px;
+}
+
+.logout-button:active,
+.add-review:active {
+  transform: scale(0.95); /* Click feedback */
+}
+
+/* ===== BUTTON CONTAINER ===== */
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== LOGO IMAGE ===== */
+.main-logo {
+  width: 80px;
+  flex: 0 0 auto;
+}
+
+/* ===== SEARCH BAR STYLING ===== */
+.search-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-container > form > input {
+  width: 580px;
+  height: 37px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+/* ===== 'Add Review' PAGE MAIN BUTTON ===== */
+.review-button {
+  width: 363px;
+  height: 93px;
+  color: #000000;
+  font-size: 36px;
+  border-radius: 49px;
+  border: none;
+  background: linear-gradient(to right, #FA8249 0%, #FBCE4A 100%);
+  transition: transform 0.1s ease-in-out;
+}
+
+.review-button:active {
+  transform: scale(0.95);
+}
+
+/* ===== MAIN BODY CONTAINER ===== */
+.main-bod {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 0 20px;
+}
+
+/* ===== GRID WRAPPER FOR ALL BOOK CARDS ===== */
+.book-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* ===== INDIVIDUAL BOOK CARD STYLING ===== */
+.book-card {
+  width: 380px;
+  height: 400px;
+  background-color: #F9EDD1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.37);
+}
+
+/* ===== BOOK CARD HEADER: Title + Time ===== */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+
+.card-time {
+  font-size: 14px !important;
+  color: #888;
+}
+
+/* ===== BOOK AUTHOR ===== */
+.card-author {
+  font-size: 16px !important;
+  color: #444;
+  margin: 4px 0;
+}
+
+/* ===== REVIEW TEXT BOX INSIDE CARD ===== */
+.card-review {
+  background-color: rgba(128, 128, 128, 0.2); /* Light gray overlay */
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 16px !important;
+  line-height: 1.6;
+  margin: 8px 0;
+  height: 180px !important;
+  overflow: auto;
+}
+
+/* ===== BOOK STATUS TEXT ===== */
+.card-status {
+  font-size: 16px !important;
+  color: #333;
+  font-weight: 500;
+  margin: 4px 0;
+}
+
+/* ===== EDIT/DELETE BUTTONS ON EACH CARD ===== */
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.card-buttons button {
+  padding: 6px 12px;
+  font-size: 15px !important;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 80px;
+  height: 34px;
+}
+
+.card-buttons button:first-child {
+  background-color: #5C858C; /* Edit */
+  color: black;
+}
+
+.card-buttons button:last-child {
+  background-color: #FA8449; /* Delete */
+  color: black;
+}
+
+/* ===== DASHBOARD TEXT AND STRUCTURE ===== */
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.dashboard-username {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #333738;
+  text-align: center;
+}

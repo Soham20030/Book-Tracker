@@ -1,69 +1,101 @@
 import { useState } from "react";
-import '../styles/Login.css'
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
+// Assets and styles
+import "../styles/Login.css";
 import Logo from "../assets/Logo.svg";
 
-const Login = ({onLogin}) => {
-    const[form, setForm] = useState({email:"", password:"",});
+const Login = ({ onLogin }) => {
+  const navigate = useNavigate();
 
-    const handleChange =(e) => {
-        setForm({...form, [e.target.name]: e.target.value});
-    };
+  // Local state for email and password
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
 
-    const handleSubmit = async(e) => {
-        e.preventDefault
+  // Handles input changes
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-        try {
-            const res = await fetch("http://localhost:5000/api/auth/login", {
-                method: "POST",
-                header: {"Content-Type": "application/json"},
-                body: JSON.stringify(form),
-            });
+  // Handles form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-            const data = await res.json();
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-            if(res.ok) {
-                alert("Login Successful!");
-                localStorage.setItem("token", data.token); //store JWT
-                onLogin?.();
-            }else {
-                alert(data.error || "Login failed");
-            }
+      const data = await res.json();
 
-        } catch (error) {
-            console.error("Login error:", error );
-            alert("Sercer error durign Login");
-        }
-    };
+      if (res.ok) {
+        toast.success("Login Successful!");
+        localStorage.setItem("token", data.token); // Store JWT
+        localStorage.setItem("username", data.username);
+        onLogin?.(); // Optional callback to inform parent
+      } else {
+        toast.error(data.error || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Server error during login");
+    }
+  };
 
-    return (
-
+  return (
     <>
-        <nav className="navbar">
-            <div class="logo"><img src={Logo} alt="Logo-image" className="main-logo" /></div>
-            <div className="button-div"><button className="signup-button">Signup</button></div>
-        </nav>
+      {/* Navigation bar */}
+      <nav className="navbar">
+        <div className="logo">
+          <img src={Logo} alt="Logo" className="main-logo" />
+        </div>
+        <button
+          className="signup-button"
+          onClick={() => navigate("/signup")}
+        >
+          Signup
+        </button>
+      </nav>
 
-        <section className="Log">
-                <div className="login-component">
-                <h2 className="login-header">Login</h2> 
+      {/* Login form */}
+      <section className="Log">
+        <div className="login-component">
+          <h2 className="login-header">Login</h2>
 
-    <form onSubmit={handleSubmit}>
-      <label for="name">Email</label>
-      <input type="email" name="email" value={form.email} onChange={handleChange} required/>
-      <br />
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <br />
 
-      <label for="name">Password</label>
-      <input type="password" name="password"  value={form.password} onChange={handleChange} required />
-      <br />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              required
+            />
+            <br />
 
-      <button type="submit" className="submit-btn">Login</button>
-    </form>
-
-             </div>
-            </section>
+            <button type="submit" className="submit-btn">
+              Login
+            </button>
+          </form>
+        </div>
+      </section>
     </>
-
-    );
+  );
 };
 
 export default Login;

@@ -1,73 +1,127 @@
-import {useState} from "react";
-import '../styles/Signup.css'
-import Logo from "../assets/Logo.svg";
+// Import required React hooks and tools
+import { useState } from "react"; // useState to manage form data
+import '../styles/Signup.css'; // Import custom CSS for styling
+import Logo from "../assets/Logo.svg"; // Logo image to be used in the navbar
+import { useNavigate } from "react-router-dom"; // For navigating programmatically
+import toast from 'react-hot-toast'; // For showing user-friendly popup messages
 
-const Signup = ({onSignup}) => {
-    const [form, setForm] = useState({username:"", email:"", password:"",});
+// Signup component — receives a prop `onSignup` that is called on successful signup
+const Signup = ({ onSignup }) => {
+  const navigate = useNavigate(); // Used to redirect users (e.g., to login or dashboard)
 
-    const handleChange =(e) => {
-        setForm({...form, [e.target.name]: e.target.value});
-    };
+  // Form state to hold user input data
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
-    console.log("Signup Component loaded");
+  // Handle input field changes and update form state
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value }); // Dynamically update field
+  };
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
+  // Debug log to confirm the component has loaded
+  console.log("Signup Component loaded");
 
-        try {
-            const res = await fetch("http://localhost:5000/api/auth/signup",{
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(form),
-            });
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page refresh on form submit
 
-            const data = await res.json();
+    try {
+      // Send a POST request to the backend signup endpoint
+      const res = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form), // Send the form data as JSON
+      });
 
-            if(res.ok) {
-                alert("Signup Successful");
-                onSignup?.();
-            } else {
-                alert(data.error || "Signup failed");
-            }
-        } catch (error) {
-            console.error(error);
-            alert("Server error during Signup");
-        }
-    };
+      const data = await res.json(); // Parse the JSON response
 
-    return (
+      if (res.ok) {
+        // If signup is successful:
+        toast.success("Signup Successful!");
+
+        // Save token and username in localStorage for session persistence
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.username);
+
+        // Call the callback function to redirect user (usually to /dashboard)
+        onSignup?.();
+      } else {
+        // If signup failed due to user error (e.g., already exists)
+        toast.error(data.error || "Signup failed");
+      }
+    } catch (error) {
+      // If there's a network/server error
+      console.error(error);
+      toast.error("Server error during Signup");
+    }
+  };
+
+  // Render the signup form
+  return (
     <>
-            <nav className="navbar">
-                <div class="logo"><img src={Logo} alt="Logo-image" className="main-logo" /></div>
-                <div className="button-div"><button className="login-button">Login</button></div>
-            </nav>
+      {/* Top navigation bar with logo and a Login button */}
+      <nav className="navbar">
+        <div className="logo">
+          <img src={Logo} alt="Logo-image" className="main-logo" />
+        </div>
+        <div className="button-div">
+          <button className="login-button" onClick={() => navigate("/login")}>
+            Login
+          </button>
+        </div>
+      </nav>
 
-            <section className="sign">
-                <div className="signup-component">
-                <h2 className="signup-header">Signup</h2> 
-                <form onSubmit={handleSubmit}>
-                    <label for="name">Username</label>
-                    <input type="text" name="username"  value={form.username} onChange={handleChange} required/>
-                    <br/>
+      {/* Main signup form area */}
+      <section className="sign">
+        <div className="signup-component">
+          <h2 className="signup-header">Signup</h2>
+          <form onSubmit={handleSubmit}>
+            {/* Username Input */}
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              value={form.username}
+              onChange={handleChange}
+              required
+            />
+            <br />
 
-                    <label for="name">Email</label>
-                    <input type="email" name="email"  value={form.email} onChange={handleChange} required />
-                    <br/>
+            {/* Email Input */}
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <br />
 
-                    <label for="name">Password</label>
-                    <input type="password" name="password"  value={form.password} onChange={handleChange}required />
-                    <br/>
+            {/* Password Input */}
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              required
+            />
+            <br />
 
-                    <button type="submit" className="submit-btn">Submit</button>
-                </form>
-            </div>
-            </section>
-
+            {/* Submit Button */}
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+          </form>
+        </div>
+      </section>
     </>
-
-        
-    );
-
+  );
 };
 
+// Export the Signup component so it can be used in other parts of the app
 export default Signup;

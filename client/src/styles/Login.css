@@ -102,21 +102,27 @@ form > input {
     color: #333738;
 }
 
+/* ===== SUBMIT BUTTON STYLING ===== */
 .submit-btn {
-    width: 200px;
-    height: 58px;
-    border-radius: 10px;
-    background: linear-gradient(to right, #FA8249 0%, #FBCE4A 100%);
-    border: none;
-    color: #333738;
-    font-size: 28px;
-    margin-top: 20px;
-    margin-left: 100px;
-    cursor: pointer;
-    transition: transform 0.1s ease-in-out;
+  width: 200px;                            /* Button width */
+  height: 58px;                            /* Button height */
+  border-radius: 10px;                     /* Rounded corners */
+  background: linear-gradient(             /* Gradient background */
+    to right, 
+    #FA8249 0%,                            /* Start with orange */
+    #FBCE4A 100%                           /* End with yellow */
+  );
+  border: none;                            /* Remove default border */
+  color: #333738;                          /* Dark gray text */
+  font-size: 28px;                         /* Large text size */
+  margin-top: 20px;                        /* Space above the button */
+  margin-left: 100px;                      /* Push button to the right */
+  cursor: pointer;                         /* Pointer cursor on hover */
+  transition: transform 0.1s ease-in-out;  /* Smooth click animation */
 }
 
-
+/* ===== CLICK EFFECT ===== */
 .submit-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.95);                  /* Shrinks slightly when clicked */
 }
+
