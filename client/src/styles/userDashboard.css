@@ -74,7 +74,7 @@
   font-size: 16px !important;
   line-height: 1.6;
   margin: 8px 0;
-  height: 180px !important; /* Fixed height for consistency */
+  height: 200px !important;
 }
 
 /* === BOOK STATUS (READING / COMPLETED ETC.) === */

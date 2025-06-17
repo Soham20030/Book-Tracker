@@ -157,8 +157,14 @@ body {
   font-size: 16px !important;
   line-height: 1.6;
   margin: 8px 0;
-  height: 180px !important;
+  height: 200px !important;
   overflow: auto;
+}
+
+.card-review  p {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ===== BOOK STATUS TEXT ===== */

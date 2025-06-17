@@ -80,6 +80,7 @@
   margin: auto;
   margin-top: 60px;
   border-radius: 12px;
+  min-width: 0; /* Allows child elements to shrink properly */
 }
 
 /* ===== FORM HEADER ===== */
@@ -98,9 +99,23 @@ label {
 
 /* ===== TEXTAREA (REVIEW BOX) ===== */
 textarea {
-  background-color: rgba(51, 55, 56, 0.35);
+  width: 100%;
+  max-width: 400px;
   height: 180px;
-  width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  color: #fff;
+  background-color: rgba(51, 55, 56, 0.35);
+  border: none;
+  border-radius: 6px;
+  resize: vertical;
+  overflow: auto;
+
+  /* ✅ These ensure text wraps */
+  white-space: normal;
+  word-break: break-word;
 }
 
 /* ===== PAGE BACKGROUND CONTAINER ===== */

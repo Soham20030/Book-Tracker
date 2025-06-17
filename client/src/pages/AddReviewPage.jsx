@@ -8,6 +8,8 @@ import Logo from "../assets/Logo.svg";
 import toast from 'react-hot-toast';
 
 const AddReviewPage = () => {
+  const [charCount, setCharCount] = useState(0);
+  const maxChars = 200;
   const navigate = useNavigate();         // For navigating to different pages
   const { id } = useParams();             // If an ID is present, we’re editing an existing book
 
@@ -36,11 +38,13 @@ const AddReviewPage = () => {
   };
 
   // Handles form input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  if (name === "review") {
+    setCharCount(value.length);
+  }
+  setForm((prev) => ({ ...prev, [name]: value }));
+};
   // Handles form submission — creates or updates a review depending on if ID exists
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -158,8 +162,11 @@ const AddReviewPage = () => {
               placeholder="Write your review here..."
               value={form.review}
               onChange={handleChange}
+              maxLength={maxChars}
               required
-            /><br />
+            />
+            <p>{charCount} / {maxChars} characters</p>
+            <br />
 
             {/* Radio buttons to choose the reading status */}
             <div className="status-options">
