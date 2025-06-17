@@ -68,12 +68,6 @@ A full-featured web app where users can log in, write reviews for books, update 
 
 ---
 
-## 📸 Screenshots
-
-*(Optional: Add screenshots of signup page, dashboard, add book page, etc.)*
-
----
-
 ## 🧱 Project Structure
 
 book-tracker/
@@ -177,8 +171,8 @@ Route	              Method	Description
 
 📘 Book Routes
 
-Route	                      Method	Description
-/api/books	                  POST	    Add new book (Auth required)
+Route	                      Method	  Description
+/api/books	                  POST	  Add new book (Auth required)
 /api/books/:id	              GET	    Get a single book
 /api/books/:id	              PUT	    Update a book
 /api/books/user/:username     GET	    Get all books by user
