@@ -14,7 +14,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware setup
-app.use(cors());               // Allow requests from different origins (important for frontend-backend communication)
+
+app.use(cors({
+  origin: "https://book-tracker-rho.vercel.app"  // Allow requests from different origins (important for frontend-backend communication)
+
+}));
+
 app.use(express.json());       // Parse incoming JSON requests
 
 // Route handling
