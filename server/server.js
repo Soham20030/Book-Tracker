@@ -1,32 +1,47 @@
-// Import required modules
-const express = require("express");                // Express framework for building API
-const pool = require("./db");                      // PostgreSQL connection pool
-const cors = require("cors");                      // Enables Cross-Origin Resource Sharing
-const authRoutes = require("./routes/auth");       // Authentication routes (signup, login)
-const bookRoutes = require("./routes/bookRoutes"); // Book-related routes
-require("dotenv").config();                        // Loads environment variables from .env file
-const path = require("path");                      // Node.js module to handle file paths
+// Import the Express framework - a minimal web application framework for Node.js
+const express = require("express");
 
-// Create an Express application instance
+// Import the database connection pool for PostgreSQL database operations
+const pool = require("./db");
+
+// Import CORS (Cross-Origin Resource Sharing) middleware to handle cross-origin requests
+const cors = require("cors");
+
+// Import authentication routes module that handles user signup, login, and auth-related endpoints
+const authRoutes = require("./routes/auth");
+
+// Import book routes module that handles all book-related CRUD operations
+const bookRoutes = require("./routes/bookRoutes");
+
+// Load environment variables from .env file into process.env
+require("dotenv").config();
+
+// Import Node.js built-in path module for handling and transforming file paths
+const path = require("path");
+
+// Create an instance of the Express application
 const app = express();
 
-// Define the port from environment variable or use 5000 as fallback
+// Set the server port from environment variable PORT, or default to 5000 if not specified
 const PORT = process.env.PORT || 5000;
 
-// Middleware setup
-
+// Configure CORS middleware to allow cross-origin requests
 app.use(cors({
-  origin: "https://book-tracker-rho.vercel.app"  // Allow requests from different origins (important for frontend-backend communication)
-
+  origin: "http://localhost:5173"
 }));
+// Add middleware to parse incoming JSON payloads in request bodies
+app.use(express.json());
 
-app.use(express.json());       // Parse incoming JSON requests
+// Mount authentication routes at the /api/auth path
+// This means all routes in authRoutes will be prefixed with /api/auth
+app.use("/api/auth", authRoutes);
 
-// Route handling
-app.use("/api/auth", authRoutes);    // All auth-related endpoints (e.g., /signup, /login) prefixed with /api/auth
-app.use("/api/books", bookRoutes);   // All book-related endpoints (e.g., /create, /delete) prefixed with /api/books
+// Mount book-related routes at the /api/books path
+// This means all routes in bookRoutes will be prefixed with /api/books
+app.use("/api/books", bookRoutes);
 
-// Start the server
+// Start the Express server and listen on the specified PORT
 app.listen(PORT, () => {
+    // Log a message to the console when the server starts successfully
     console.log(`Server running at http://localhost:${PORT}`);
 });
